@@ -10,16 +10,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
     <script>
         $('document').ready(function(){
-            $('#date_picker').datetimepicker({
-                startDate: '+2020/8/01'
+            $('.date_picker').datetimepicker({
+                formatDate: 'Y/m/d',
+                minDate: Date(),
             });
+            $('.date_picker').change(function(){
+                var event_date = $('.date_picker').val();
+                //console.log(event_date)
+                $('.registration').datetimepicker({
+                formatDate: 'Y/m/d',
+                minDate: Date(),
+                maxDate: event_date,
+            })
+                 
+            })
+            
+   
         })
     </script>
 </head>
 <body>
   <div class="align-center">
       <h1>Date and Time picker </h1>
-      <h5>Choose Date and Time : </h5><input type="text" id="date_picker">
+      <h5>Choose Event Date : </h5><input type="text" class="date_picker">
+      <h5>Registration Date:</h5><input type="text" class="registration">
   </div>
 </body>
 </html>
